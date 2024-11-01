@@ -1,0 +1,38 @@
+<h1>Crear Nueva Sesión de Entrenamiento</h1>
+
+<%= form_with model: @workout_session, local: true do |form| %>
+  <% if @workout_session.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@workout_session.errors.count, "error") %> prohibió que esta sesión se guardara:</h2>
+      <ul>
+        <% @workout_session.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :date, 'Fecha' %>
+    <%= form.date_field :date, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :activity, 'Actividad' %>
+    <%= form.text_field :activity, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :duration, 'Duración (minutos)' %>
+    <%= form.number_field :duration, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description, 'Descripción' %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+  <%= form.submit 'Guardar', class: 'btn btn-primary' %>
+<% end %>
+
+<%= link_to 'Volver a mis sesiones', workout_sessions_path, class: 'btn btn-secondary' %>

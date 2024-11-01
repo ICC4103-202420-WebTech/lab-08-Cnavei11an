@@ -1,0 +1,13 @@
+<h1>Detalles de la Sesión de Entrenamiento</h1>
+
+<p><strong>Fecha:</strong> <%= @workout_session.date %></p>
+<p><strong>Actividad:</strong> <%= @workout_session.activity %></p>
+<p><strong>Duración:</strong> <%= @workout_session.duration %> minutos</p>
+<p><strong>Descripción:</strong> <%= @workout_session.description %></p>
+
+<%= link_to 'Editar', edit_workout_session_path(@workout_session), class: 'btn btn-secondary' %>
+<%= form_with model: @workout_session, method: :delete, local: true do |form| %>
+  <%= form.submit 'Eliminar', data: { confirm: '¿Estás seguro?' }, class: 'btn btn-danger' %>
+<% end %>
+
+<%= link_to 'Volver a mis sesiones', workout_sessions_path, class: 'btn btn-primary' %>
